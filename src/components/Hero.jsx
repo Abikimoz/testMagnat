@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import './Hero.css';
 
-// Целевая дата — начало конкурса (14 сентября 2025).
+// Период конкурса: начало (14 сентября 2025) и окончание (21 октября 2025).
 const START_DATE = new Date('2025-09-14T00:00:00').getTime();
+const END_DATE = new Date('2025-10-21T00:00:00').getTime();
 
 function plural(n, one, few, many) {
   const mod10 = n % 10;
@@ -12,7 +13,7 @@ function plural(n, one, few, many) {
   return many;
 }
 
-function useCountdown(target) {
+function useCountdown(target, end) {
   const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
@@ -20,18 +21,23 @@ function useCountdown(target) {
     return () => clearInterval(id);
   }, []);
 
-  const diff = Math.max(0, target - now);
+  // Отсчёт «после начала»: сколько времени прошло с даты старта.
+  const diff = Math.max(0, now - target);
   const days = Math.floor(diff / 86_400_000);
   const hours = Math.floor((diff % 86_400_000) / 3_600_000);
   const minutes = Math.floor((diff % 3_600_000) / 60_000);
   const seconds = Math.floor((diff % 60_000) / 1000);
 
-  return { days, hours, minutes, seconds };
+  // Процент прошедшего периода конкурса (от старта до окончания).
+  const period = end - target;
+  const percent = Math.min(100, Math.max(0, (diff / period) * 100));
+
+  return { days, hours, minutes, seconds, percent };
 }
 
 function formatCountdown({ days, hours, minutes, seconds }) {
   return (
-    `До начала ${days} ${plural(days, 'день', 'дня', 'дней')} ` +
+    `После начала ${days} ${plural(days, 'день', 'дня', 'дней')} ` +
     `${hours} ${plural(hours, 'час', 'часа', 'часов')} ` +
     `${minutes} ${plural(minutes, 'минута', 'минуты', 'минут')} ` +
     `${seconds} ${plural(seconds, 'секунда', 'секунды', 'секунд')}`
@@ -39,17 +45,16 @@ function formatCountdown({ days, hours, minutes, seconds }) {
 }
 
 function Hero({ onApply }) {
-  const countdown = useCountdown(START_DATE);
+  const countdown = useCountdown(START_DATE, END_DATE);
+  const percent = Math.round(countdown.percent);
+  // Конкурс завершён — прогресс-полосу не показываем как «загруженную».
+  const completed = countdown.percent >= 100;
 
   return (
     <section className="hero">
       <div className="hero-copy">
         <h1>
-          Конкурс ЛУЧШИХ брендов
-          <br />
-          ГАСТРОИНДУСТРИи
-          <br />
-          Санкт-Петербурга
+          Конкурс ЛУЧШИХ брендов ГАСТРОИНДУСТРИи Санкт-Петербурга
           <br />
           <span className="hero-year">2025</span>
         </h1>
@@ -71,9 +76,15 @@ function Hero({ onApply }) {
             21 октября 2025
           </p>
           <span id="countdown">{formatCountdown(countdown)}</span>
-          <div className="deadline-progress">
-            <span className="deadline-progress-fill" />
-          </div>
+          {!completed && (
+            <div className="deadline-progress">
+              <span
+                className="deadline-progress-fill"
+                style={{ width: `${countdown.percent}%` }}
+                data-progress={`${percent}%`}
+              />
+            </div>
+          )}
         </div>
       </div>
 
