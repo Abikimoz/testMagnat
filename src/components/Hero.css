@@ -71,7 +71,7 @@
   font-weight: 500;
 }
 
-.deadline span {
+.deadline-inner > span {
   display: block;
   margin-top: 25px;
   font-size: 12px;
@@ -85,64 +85,33 @@
   height: 12px;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.1);
-  overflow: visible;
-  cursor: pointer;
+  overflow: hidden;
   position: relative;
 }
 
+/* Живой индикатор: полоса всегда заполнена, пульсирует свечением */
 .deadline-progress-fill {
   display: block;
   height: 100%;
   width: 71.5%;
   border-radius: 24px;
   background: linear-gradient(90deg, #90ff0f 0%, #ceff94 100%);
-  background-size: 200% 100%;
   position: relative;
-  transition:
-    width 1s ease,
-    box-shadow 0.3s ease,
-    filter 0.3s ease;
-  animation: progress-shimmer 2.4s linear infinite;
-}
-
-/* Тултип с процентом при наведении */
-.deadline-progress-fill::after {
-  content: attr(data-progress);
-  position: absolute;
-  top: -26px;
-  right: 0;
-  padding: 2px 8px;
-  border-radius: 8px;
-  background: var(--lime);
-  color: var(--purple);
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1.4;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(4px);
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-  pointer-events: none;
+  animation: progress-glow 2s ease-in-out infinite;
 }
 
 .deadline-progress:hover .deadline-progress-fill {
-  box-shadow: 0 0 14px rgba(182, 255, 15, 0.85);
-  filter: brightness(1.15);
+  filter: brightness(1.25);
+  box-shadow: 0 0 18px rgba(182, 255, 15, 0.9);
 }
 
-.deadline-progress:hover .deadline-progress-fill::after {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@keyframes progress-shimmer {
-  0% {
-    background-position: 0% 50%;
-  }
+@keyframes progress-glow {
+  0%,
   100% {
-    background-position: 200% 50%;
+    box-shadow: 0 0 4px rgba(182, 255, 15, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(182, 255, 15, 0.8);
   }
 }
 

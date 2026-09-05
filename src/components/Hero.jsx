@@ -46,9 +46,6 @@ function formatCountdown({ days, hours, minutes, seconds }) {
 
 function Hero({ onApply }) {
   const countdown = useCountdown(START_DATE, END_DATE);
-  const percent = Math.round(countdown.percent);
-  // Конкурс завершён — прогресс-полосу не показываем как «загруженную».
-  const completed = countdown.percent >= 100;
 
   return (
     <section className="hero">
@@ -76,15 +73,9 @@ function Hero({ onApply }) {
             21 октября 2025
           </p>
           <span id="countdown">{formatCountdown(countdown)}</span>
-          {!completed && (
-            <div className="deadline-progress">
-              <span
-                className="deadline-progress-fill"
-                style={{ width: `${countdown.percent}%` }}
-                data-progress={`${percent}%`}
-              />
-            </div>
-          )}
+          <div className="deadline-progress" aria-hidden="true">
+            <span className="deadline-progress-fill" />
+          </div>
         </div>
       </div>
 
