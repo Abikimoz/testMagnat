@@ -60,9 +60,9 @@ function Header({ onApply }) {
               {link.label}
             </a>
           ) : (
-            <span key={link.label} className="nav-link-disabled" aria-disabled="true">
+            <button key={link.label} type="button" className="nav-action">
               {link.label}
-            </span>
+            </button>
           ),
         )}
       </nav>

@@ -127,8 +127,18 @@
 }
 
 .nav a:hover,
+.nav-action:hover,
 .details-footer a:hover {
   color: var(--lime);
+}
+
+.nav-action {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
 }
 
 .apply {
