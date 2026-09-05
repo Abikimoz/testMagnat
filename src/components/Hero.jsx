@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
 import './Hero.css';
 import { competition } from '../data/siteContent.js';
+import { useCountdown } from '../hooks/useCountdown.js';
 
 function plural(n, one, few, many) {
   const mod10 = n % 10;
@@ -8,28 +8,6 @@ function plural(n, one, few, many) {
   if (mod10 === 1 && mod100 !== 11) return one;
   if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return few;
   return many;
-}
-
-function useCountdown(target, end) {
-  const [now, setNow] = useState(() => Date.now());
-
-  useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  // Отсчёт «после начала»: сколько времени прошло с даты старта.
-  const diff = Math.max(0, now - target);
-  const days = Math.floor(diff / 86_400_000);
-  const hours = Math.floor((diff % 86_400_000) / 3_600_000);
-  const minutes = Math.floor((diff % 3_600_000) / 60_000);
-  const seconds = Math.floor((diff % 60_000) / 1000);
-
-  // Процент прошедшего периода конкурса (от старта до окончания).
-  const period = end - target;
-  const percent = Math.min(100, Math.max(0, (diff / period) * 100));
-
-  return { days, hours, minutes, seconds, percent };
 }
 
 function formatCountdown({ days, hours, minutes, seconds }) {

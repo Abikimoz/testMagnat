@@ -89,7 +89,6 @@
   position: relative;
 }
 
-/* Живой индикатор: полоса всегда заполнена, пульсирует свечением */
 .deadline-progress-fill {
   display: block;
   height: 100%;
