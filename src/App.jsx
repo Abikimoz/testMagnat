@@ -1,7 +1,9 @@
+import Header from './components/Header.jsx';
+
 function App() {
   return (
     <div className="page">
-      {/* Секции лендинга будут здесь */}
+      <Header />
     </div>
   );
 }
