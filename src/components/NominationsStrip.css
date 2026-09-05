@@ -1,0 +1,63 @@
+.scroll-nominations {
+  height: 464px;
+  margin-top: -266px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.scroll-nominations div {
+  height: 64px;
+  width: 100%;
+  padding: 8px 40px;
+  display: flex;
+  align-items: center;
+  color: var(--black);
+  font-family: inherit;
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 30px;
+  background: linear-gradient(90deg, rgba(238, 162, 252, 0.5) 0%, #eea2fc 33.17%, rgba(144, 255, 15, 0) 100%);
+}
+
+.scroll-nominations div:nth-child(2) {
+  justify-content: flex-end;
+  align-self: flex-end;
+  background: linear-gradient(90deg, rgba(144, 255, 15, 0) 0%, #90ff0f 72.6%, #90ff0f 100%);
+}
+
+.scroll-nominations div:nth-child(3) {
+  background: linear-gradient(90deg, #3ffdff 0%, #3ffdff 25.96%, rgba(63, 253, 255, 0) 100%);
+}
+
+.scroll-nominations div:nth-child(4) {
+  justify-content: flex-end;
+  align-self: flex-end;
+  background: linear-gradient(90deg, rgba(236, 158, 100, 0) 0%, #ec9e64 35.58%, #ec9e64 60.58%, rgba(236, 158, 100, 0.8) 100%);
+}
+
+.scroll-nominations div:nth-child(5) {
+  background: linear-gradient(90deg, #fdfb56 0%, #fdfb56 48.08%, rgba(144, 255, 15, 0) 100%);
+}
+
+@media (max-width: 1000px) {
+  .scroll-nominations {
+    height: auto;
+    margin-top: -184px;
+    padding: 45px 24px;
+    gap: 4px;
+  }
+
+  .scroll-nominations div {
+    height: 52px;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: clamp(16px, 3.5vw, 30px);
+  }
+}

@@ -1,5 +1,6 @@
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
+import NominationsStrip from './components/NominationsStrip.jsx';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <NominationsStrip />
       </main>
     </div>
   );
