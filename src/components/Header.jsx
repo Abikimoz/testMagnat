@@ -18,7 +18,7 @@ function Header({ onApply }) {
         <span>
           Конкурс лучших брендов
           <br />
-          гастроиндустрии Санкт-Петербурга
+          гастроиндустрии <span className="no-break">Санкт-Петербурга</span>
         </span>
       </div>
 
