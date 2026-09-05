@@ -1,6 +1,8 @@
+import './sections.css';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import NominationsStrip from './components/NominationsStrip.jsx';
+import Steps from './components/Steps.jsx';
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
       <main>
         <Hero />
         <NominationsStrip />
+        <Steps />
       </main>
     </div>
   );

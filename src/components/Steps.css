@@ -1,0 +1,88 @@
+.steps {
+  min-height: 544px;
+  padding-top: 0;
+  width: min(1660px, calc(100% - 96px));
+  grid-template-columns: 300px 1fr;
+  column-gap: 80px;
+  margin-top: 0;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.steps-list article {
+  min-height: 108px;
+  padding: 30px 0;
+  display: grid;
+  grid-template-columns: 140px 280px 1fr;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+}
+
+.steps-list article::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--lime) 0%, rgba(182, 255, 15, 0.55) 45%, rgba(182, 255, 15, 0) 100%);
+}
+
+.stage-badge {
+  display: inline-block;
+  width: 140px;
+  padding: 10px 24px;
+  border: 2px solid var(--lime);
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.stage-date {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.stage-badge--offline {
+  color: var(--lime);
+}
+
+.stage-name {
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1000px) {
+  .steps-list article {
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+  }
+
+  .stage-badge,
+  .stage-date,
+  .stage-name {
+    font-size: 12px;
+  }
+
+  .stage-badge {
+    width: 120px;
+    padding: 8px 12px;
+  }
+
+  .stage-date {
+    grid-column: 2;
+  }
+
+  .stage-name {
+    grid-column: 2;
+  }
+}
