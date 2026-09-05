@@ -53,3 +53,11 @@ npm test
 ```bash
 npx vitest
 ```
+
+## Проверка кода
+
+Запуск ESLint:
+
+```bash
+npm run lint
+```
