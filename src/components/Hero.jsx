@@ -12,7 +12,7 @@ function plural(n, one, few, many) {
 
 function formatCountdown({ days, hours, minutes, seconds }) {
   return (
-    `После начала ${days} ${plural(days, 'день', 'дня', 'дней')} ` +
+    `${competition.countdownLabel} ${days} ${plural(days, 'день', 'дня', 'дней')} ` +
     `${hours} ${plural(hours, 'час', 'часа', 'часов')} ` +
     `${minutes} ${plural(minutes, 'минута', 'минуты', 'минут')} ` +
     `${seconds} ${plural(seconds, 'секунда', 'секунды', 'секунд')}`
@@ -34,16 +34,16 @@ function Hero({ onApply }) {
           <span className="hero-year">{competition.year}</span>
         </h1>
         <button type="button" className="apply hero-apply" onClick={onApply}>
-          Подать заявку
+          {competition.applyLabel}
         </button>
       </div>
 
       <div className="deadline">
         <div className="deadline-inner">
           <h2>
-            Сроки проведения
+            {competition.deadlineTitle[0]}
             <br />
-            конкурса
+            {competition.deadlineTitle[1]}
           </h2>
           <p>
             {competition.periodLabel[0]}
@@ -57,7 +57,7 @@ function Hero({ onApply }) {
         </div>
       </div>
 
-      <img className="hero-food" src="/images/hero-food.png" alt="Гастрономическая композиция" />
+      <img className="hero-food" src="/images/hero-food.png" alt={competition.imageAlt} />
     </section>
   );
 }

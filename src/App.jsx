@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './sections.css';
 import ApplyModal from './components/ApplyModal.jsx';
 import Header from './components/Header.jsx';
@@ -6,20 +5,21 @@ import Hero from './components/Hero.jsx';
 import NominationsStrip from './components/NominationsStrip.jsx';
 import Steps from './components/Steps.jsx';
 import About from './components/About.jsx';
+import { useApplyModal } from './hooks/useApplyModal.js';
 
 function App() {
-  const [applyOpen, setApplyOpen] = useState(false);
+  const { isOpen, open, close } = useApplyModal();
 
   return (
     <div className="page">
-      <Header onApply={() => setApplyOpen(true)} />
+      <Header onApply={open} />
       <main>
-        <Hero onApply={() => setApplyOpen(true)} />
+        <Hero onApply={open} />
         <NominationsStrip />
         <Steps />
         <About />
       </main>
-      <ApplyModal open={applyOpen} onClose={() => setApplyOpen(false)} />
+      <ApplyModal open={isOpen} onClose={close} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Header.css';
-import { navLinks } from '../data/siteContent.js';
+import { headerContent, navLinks } from '../data/siteContent.js';
 
 function Header({ onApply }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,41 +10,32 @@ function Header({ onApply }) {
       <div className="brand-mark">
         <img src="/images/brand-mark.svg" alt="" />
         <span>
-          Конкурс лучших брендов
+          {headerContent.brandLines[0]}
           <br />
-          гастроиндустрии <span className="no-break">Санкт-Петербурга</span>
+          {headerContent.brandLines[1]}{' '}
+          <span className="no-break">{headerContent.brandLocation}</span>
         </span>
       </div>
 
       <div className="support">
         <strong>
-          ПРИ
+          {headerContent.supportTitle[0]}
           <br />
-          ПОДДЕРЖКЕ
+          {headerContent.supportTitle[1]}
         </strong>
-        <div className="support-logo foundation-logo">
-          <img
-            src="/images/foundation.svg"
-            alt="Фонд развития субъектов малого и среднего предпринимательства в Санкт-Петербурге"
-          />
-          <span>
-            Фонд развития субъектов малого
-            <br />
-            и среднего предпринимательства
-            <br />
-            в Санкт-Петербурге
-          </span>
-        </div>
-        <div className="support-logo">
-          <img src="/images/committee.svg" alt="" />
-          <span>
-            Комитет по промышленной
-            <br />
-            политике, инновациям и торговле
-            <br />
-            Санкт-Петербурга
-          </span>
-        </div>
+        {headerContent.organizations.map((organization) => (
+          <div key={organization.image} className={`support-logo ${organization.className ?? ''}`}>
+            <img src={organization.image} alt={organization.imageAlt} />
+            <span>
+              {organization.lines.map((line, index) => (
+                <span key={line}>
+                  {line}
+                  {index < organization.lines.length - 1 && <br />}
+                </span>
+              ))}
+            </span>
+          </div>
+        ))}
       </div>
 
       <nav className={`nav${menuOpen ? ' is-open' : ''}`} aria-label="Навигация">
@@ -62,13 +53,13 @@ function Header({ onApply }) {
       </nav>
 
       <button type="button" className="apply top-apply" onClick={onApply}>
-        Подать заявку
+        {headerContent.applyLabel}
       </button>
 
       <button
         type="button"
         className="menu-button"
-        aria-label="Открыть меню"
+        aria-label={headerContent.menuLabel}
         aria-expanded={menuOpen}
         onClick={() => setMenuOpen((open) => !open)}
       >

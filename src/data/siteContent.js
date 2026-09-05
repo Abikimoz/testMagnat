@@ -5,12 +5,53 @@ export const navLinks = [
   { href: null, label: 'Контакты' },
 ];
 
+export const headerContent = {
+  brandLines: ['Конкурс лучших брендов', 'гастроиндустрии'],
+  brandLocation: 'Санкт-Петербурга',
+  supportTitle: ['ПРИ', 'ПОДДЕРЖКЕ'],
+  organizations: [
+    {
+      className: 'foundation-logo',
+      image: '/images/foundation.svg',
+      imageAlt:
+        'Фонд развития субъектов малого и среднего предпринимательства в Санкт-Петербурге',
+      lines: ['Фонд развития субъектов малого', 'и среднего предпринимательства', 'в Санкт-Петербурге'],
+    },
+    {
+      image: '/images/committee.svg',
+      imageAlt: '',
+      lines: ['Комитет по промышленной', 'политике, инновациям и торговле', 'Санкт-Петербурга'],
+    },
+  ],
+  applyLabel: 'Подать заявку',
+  menuLabel: 'Открыть меню',
+};
+
 export const competition = {
   title: 'Конкурс лучших брендов гастроиндустрии Санкт-Петербурга',
   year: '2025',
   start: '2025-09-14T00:00:00',
   end: '2025-10-21T00:00:00',
   periodLabel: ['14 сентября 2025 –', '21 октября 2025'],
+  deadlineTitle: ['Сроки проведения', 'конкурса'],
+  countdownLabel: 'После начала',
+  imageAlt: 'Гастрономическая композиция',
+  applyLabel: 'Подать заявку',
+};
+
+export const aboutContent = {
+  title: 'О конкурсе',
+  detailsLabel: 'Подробные условия участия',
+};
+
+export const applicationForm = {
+  title: 'Подать заявку',
+  closeLabel: 'Закрыть',
+  fields: [
+    { name: 'brand', type: 'text', placeholder: 'Название бренда' },
+    { name: 'email', type: 'email', placeholder: 'Email' },
+  ],
+  submitLabel: 'Отправить',
 };
 
 export const nominations = [

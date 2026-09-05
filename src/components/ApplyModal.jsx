@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import './ApplyModal.css';
+import { applicationForm } from '../data/siteContent.js';
 
 function ApplyModal({ open, onClose }) {
   const dialogRef = useRef(null);
@@ -14,15 +15,16 @@ function ApplyModal({ open, onClose }) {
 
   return (
     <dialog ref={dialogRef} className="apply-modal" onCancel={onClose}>
-      <button type="button" className="apply-modal-close" aria-label="Закрыть" onClick={onClose}>
+      <button type="button" className="apply-modal-close" aria-label={applicationForm.closeLabel} onClick={onClose}>
         ×
       </button>
-      <h2>Подать заявку</h2>
+      <h2>{applicationForm.title}</h2>
       <form method="dialog" onSubmit={onClose}>
-        <input required name="brand" placeholder="Название бренда" />
-        <input required name="email" type="email" placeholder="Email" />
+        {applicationForm.fields.map((field) => (
+          <input key={field.name} required {...field} />
+        ))}
         <button type="submit" className="apply-modal-submit">
-          Отправить
+          {applicationForm.submitLabel}
         </button>
       </form>
     </dialog>
