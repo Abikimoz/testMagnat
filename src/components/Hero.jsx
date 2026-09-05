@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Hero.css';
-
-// Период конкурса: начало (14 сентября 2025) и окончание (21 октября 2025).
-const START_DATE = new Date('2025-09-14T00:00:00').getTime();
-const END_DATE = new Date('2025-10-21T00:00:00').getTime();
+import { competition } from '../data/siteContent.js';
 
 function plural(n, one, few, many) {
   const mod10 = n % 10;
@@ -45,15 +42,18 @@ function formatCountdown({ days, hours, minutes, seconds }) {
 }
 
 function Hero({ onApply }) {
-  const countdown = useCountdown(START_DATE, END_DATE);
+  const countdown = useCountdown(
+    new Date(competition.start).getTime(),
+    new Date(competition.end).getTime(),
+  );
 
   return (
     <section className="hero">
       <div className="hero-copy">
         <h1>
-          Конкурс ЛУЧШИХ брендов ГАСТРОИНДУСТРИи Санкт-Петербурга
+          {competition.title}
           <br />
-          <span className="hero-year">2025</span>
+          <span className="hero-year">{competition.year}</span>
         </h1>
         <button type="button" className="apply hero-apply" onClick={onApply}>
           Подать заявку
@@ -68,9 +68,9 @@ function Hero({ onApply }) {
             конкурса
           </h2>
           <p>
-            14 сентября 2025 –
+            {competition.periodLabel[0]}
             <br />
-            21 октября 2025
+            {competition.periodLabel[1]}
           </p>
           <span id="countdown">{formatCountdown(countdown)}</span>
           <div className="deadline-progress" aria-hidden="true">

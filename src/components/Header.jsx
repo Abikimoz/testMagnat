@@ -1,12 +1,6 @@
 import { useState } from 'react';
 import './Header.css';
-
-const NAV_LINKS = [
-  { href: '#about', label: 'О конкурсе' },
-  { href: '#nominations', label: 'Номинации' },
-  { href: null, label: 'Условия участия' },
-  { href: '#contacts', label: 'Контакты' },
-];
+import { navLinks } from '../data/siteContent.js';
 
 function Header({ onApply }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,7 +48,7 @@ function Header({ onApply }) {
       </div>
 
       <nav className={`nav${menuOpen ? ' is-open' : ''}`} aria-label="Навигация">
-        {NAV_LINKS.map((link) =>
+        {navLinks.map((link) =>
           link.href ? (
             <a key={link.label} href={link.href} onClick={() => setMenuOpen(false)}>
               {link.label}

@@ -1,17 +1,10 @@
 import './NominationsStrip.css';
-
-const NOMINATIONS = [
-  'ЛУЧШИЙ КОНДИТЕРСКИЙ БРЕНД',
-  'Лучшая кофейня',
-  'Лучший стрит-фуд',
-  'Открытие года',
-  'Молодой ресторатор',
-];
+import { nominations } from '../data/siteContent.js';
 
 function NominationsStrip() {
   return (
     <section id="nominations" className="scroll-nominations" aria-label="Номинации">
-      {NOMINATIONS.map((name) => (
+      {nominations.map((name) => (
         <div key={name}>{name}</div>
       ))}
     </section>
