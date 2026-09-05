@@ -4,7 +4,7 @@ import './Header.css';
 const NAV_LINKS = [
   { href: '#about', label: 'О конкурсе' },
   { href: '#nominations', label: 'Номинации' },
-  { href: '#steps', label: 'Условия участия' },
+  { href: null, label: 'Условия участия' },
   { href: '#contacts', label: 'Контакты' },
 ];
 
@@ -54,11 +54,17 @@ function Header({ onApply }) {
       </div>
 
       <nav className={`nav${menuOpen ? ' is-open' : ''}`} aria-label="Навигация">
-        {NAV_LINKS.map((link) => (
-          <a key={link.href} href={link.href}>
-            {link.label}
-          </a>
-        ))}
+        {NAV_LINKS.map((link) =>
+          link.href ? (
+            <a key={link.label} href={link.href} onClick={() => setMenuOpen(false)}>
+              {link.label}
+            </a>
+          ) : (
+            <span key={link.label} className="nav-link-disabled" aria-disabled="true">
+              {link.label}
+            </span>
+          ),
+        )}
       </nav>
 
       <button type="button" className="apply top-apply" onClick={onApply}>

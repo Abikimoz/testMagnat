@@ -10,7 +10,7 @@ const NOMINATIONS = [
 
 function NominationsStrip() {
   return (
-    <section className="scroll-nominations" aria-label="Номинации">
+    <section id="nominations" className="scroll-nominations" aria-label="Номинации">
       {NOMINATIONS.map((name) => (
         <div key={name}>{name}</div>
       ))}
