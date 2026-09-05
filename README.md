@@ -61,3 +61,7 @@ npx vitest
 ```bash
 npm run lint
 ```
+
+## Continuous Integration
+
+GitHub Actions автоматически запускает установку зависимостей, ESLint, тесты и production-сборку для каждого push и pull request.
