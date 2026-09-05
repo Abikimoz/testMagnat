@@ -12,13 +12,13 @@ export const headerContent = {
   organizations: [
     {
       className: 'foundation-logo',
-      image: '/images/foundation.svg',
+      image: 'images/foundation.svg',
       imageAlt:
         'Фонд развития субъектов малого и среднего предпринимательства в Санкт-Петербурге',
       lines: ['Фонд развития субъектов малого', 'и среднего предпринимательства', 'в Санкт-Петербурге'],
     },
     {
-      image: '/images/committee.svg',
+      image: 'images/committee.svg',
       imageAlt: '',
       lines: ['Комитет по промышленной', 'политике, инновациям и торговле', 'Санкт-Петербурга'],
     },

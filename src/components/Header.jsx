@@ -2,13 +2,15 @@ import { useState } from 'react';
 import './Header.css';
 import { headerContent, navLinks } from '../data/siteContent.js';
 
+const assetUrl = (path) => `${import.meta.env.BASE_URL}${path}`;
+
 function Header({ onApply }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="header">
       <div className="brand-mark">
-        <img src="/images/brand-mark.svg" alt="" />
+        <img src={assetUrl('images/brand-mark.svg')} alt="" />
         <span>
           {headerContent.brandLines[0]}
           <br />
@@ -25,7 +27,7 @@ function Header({ onApply }) {
         </strong>
         {headerContent.organizations.map((organization) => (
           <div key={organization.image} className={`support-logo ${organization.className ?? ''}`}>
-            <img src={organization.image} alt={organization.imageAlt} />
+            <img src={assetUrl(organization.image)} alt={organization.imageAlt} />
             <span>
               {organization.lines.map((line, index) => (
                 <span key={line}>

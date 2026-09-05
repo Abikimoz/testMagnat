@@ -2,6 +2,8 @@ import './Hero.css';
 import { competition } from '../data/siteContent.js';
 import { useCountdown } from '../hooks/useCountdown.js';
 
+const assetUrl = (path) => `${import.meta.env.BASE_URL}${path}`;
+
 function plural(n, one, few, many) {
   const mod10 = n % 10;
   const mod100 = n % 100;
@@ -57,7 +59,7 @@ function Hero({ onApply }) {
         </div>
       </div>
 
-      <img className="hero-food" src="/images/hero-food.png" alt={competition.imageAlt} />
+      <img className="hero-food" src={assetUrl('images/hero-food.png')} alt={competition.imageAlt} />
     </section>
   );
 }

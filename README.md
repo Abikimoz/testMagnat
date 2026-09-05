@@ -62,6 +62,14 @@ npx vitest
 npm run lint
 ```
 
+## GitHub Pages
+
+Для публикации включите GitHub Pages в настройках репозитория: `Settings` → `Pages` → `Source` → `GitHub Actions`.
+
+После push в ветку `main` workflow автоматически выполнит проверки, соберёт проект и опубликует его по адресу:
+
+`https://abikimoz.github.io/testMagnat/`
+
 ## Continuous Integration
 
 GitHub Actions автоматически запускает установку зависимостей, ESLint, тесты и production-сборку для каждого push и pull request.
