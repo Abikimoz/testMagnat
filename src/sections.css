@@ -2,9 +2,9 @@
 
 .content-section {
   display: grid;
-  grid-template-columns: 560px 1100px;
-  gap: 0;
-  width: 1660px;
+  grid-template-columns: 300px 1fr;
+  column-gap: 80px;
+  width: min(1660px, calc(100% - 96px));
   margin: 0 auto;
 }
 

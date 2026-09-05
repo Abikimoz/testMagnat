@@ -1,0 +1,60 @@
+.about {
+  min-height: 520px;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.about .side-title {
+  text-transform: uppercase;
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.about-body {
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.about-body p {
+  margin: 0 0 24px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Залитая зелёная кнопка по референсу about.html */
+.btn-details {
+  display: inline-block;
+  background-color: #7cff00;
+  color: #120535;
+  padding: 18px 40px;
+  border: 0;
+  border-radius: 50px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: 20px;
+  transition: transform 0.2s ease;
+}
+
+.btn-details:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 1000px) {
+  .about-body {
+    font-size: 13px;
+  }
+
+  .about .side-title {
+    font-size: clamp(30px, 6vw, 38px);
+  }
+
+  .btn-details {
+    width: 100%;
+    font-size: 18px;
+    padding: 16px 24px;
+  }
+}

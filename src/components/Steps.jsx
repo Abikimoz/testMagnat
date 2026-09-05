@@ -26,7 +26,7 @@ const STEPS = [
 function Steps() {
   return (
     <section id="steps" className="content-section steps">
-      <h2 className="side-title">Этапы</h2>
+      <h2 className="side-title">ЭТАПЫ</h2>
       <div className="steps-list">
         {STEPS.map((step) => (
           <article key={step.lines[0]}>

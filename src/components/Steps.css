@@ -7,6 +7,12 @@
   margin-top: 0;
 }
 
+.steps .side-title {
+  text-transform: uppercase;
+  font-size: 38px;
+  font-weight: 700;
+}
+
 .steps-list {
   display: flex;
   flex-direction: column;
